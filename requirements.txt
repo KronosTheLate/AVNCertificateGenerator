@@ -1,0 +1,4 @@
+typst>=0.13.0
+nicegui>=2.0.0
+pywebview>=5.0
+pyinstaller>=6.0.0
