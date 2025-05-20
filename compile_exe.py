@@ -18,7 +18,7 @@ def main():
     bin_folder = "Scripts"
     py = os.path.join(venv, bin_folder, "python")
     pip = os.path.join(venv, bin_folder, "pip")
-    nicegui_pack = os.path.join(venv, bin_folder, "nicegui-pack")
+    nicegui_pack_exe = os.path.join(venv, bin_folder, "nicegui-pack.exe")
 
     # upgrade pip: if want to. maybe not.
     # print("upgrading pip...")
@@ -32,15 +32,12 @@ def main():
     if os.path.isfile(req):
         print("Installing deendencies...")
         try:
-            run([pip, "install", "-r", req])
+            run([pip, "install", "-r", req, "-qq"])
         except subprocess.CalledProcessError as e:
             print("Dependency install failed!")
             raise e
-
-    
-    
-    subprocess.run([py, "-m", "pyinstaller", "--version"])
-    #run([py, "-m", "nicegui.scripts.pack", "--onefile", "--name", "AVNCertificateGenerator", "main.py"])
+        
+    run([nicegui_pack_exe, "--onefile", "--name", "AVNCertificateGenerator", "main.py"])
             
 if __name__ == "__main__":
     main()
